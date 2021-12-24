@@ -1,0 +1,31 @@
+name: Validation
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+      - name: validate composer.json and composer.lock
+        run: composer validate --strict
+      - name: cache
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+      - name: composer install
+        run: composer install --prefer-dist --no-progress
+      - name: lint
+        run: find . -name '*.php' ! -path './vendor/*' -exec php -l -n {} \; | (! grep -v "No syntax errors detected")
+      - name: run examples
+        run: find . -name '*.php' ! -path './vendor/*' -exec php -n {} \;
