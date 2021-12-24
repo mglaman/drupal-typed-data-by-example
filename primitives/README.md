@@ -1,4 +1,4 @@
-# Strings
-This section covers strings in the Typed Data API.
+# Primitives
+This section covers primitive values in the Typed Data API.
 
-* `basic.php` has a simple case of validating that a string is under a max length.
+Data types that represent primitive values implement `\Drupal\Core\TypedData\PrimitiveInterface`. This interface has a `getCastedValue` method. This ensures the value is always returned into it's actual type in PHP (not a string representation.)
