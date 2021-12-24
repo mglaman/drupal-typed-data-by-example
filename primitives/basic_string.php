@@ -24,12 +24,14 @@ $string_definition = DataDefinition::create('string')
 // Now, we'll use the typed data manager to create a typed data value.
 // It requires the data definition and the value.
 $value = $typed_data_manager->create($string_definition, 'foobar');
+assert($value instanceof \Drupal\Core\TypedData\Plugin\DataType\StringData);
 
 // We can use the `::validate` method to check our applied constraints.
 $violations = $value->validate();
 assert(count($violations) === 0);
 
 $invalid_value = $typed_data_manager->create($string_definition, 'some really long string');
+assert($invalid_value instanceof \Drupal\Core\TypedData\Plugin\DataType\StringData);
 
 $violations = $invalid_value->validate();
 assert(count($violations) === 1);

@@ -29,10 +29,12 @@ $definition = DataDefinition::create('email')
 
 
 $valid = $typed_data_manager->create($definition, 'foo@example.com');
+assert($valid instanceof \Drupal\Core\TypedData\Plugin\DataType\Email);
 $violations = $valid->validate();
 assert(count($violations) === 0);
 
 $invalid = $typed_data_manager->create($definition, 'foo@localhost');
+assert($valid instanceof \Drupal\Core\TypedData\Plugin\DataType\Email);
 $violations = $invalid->validate();
 assert(count($violations) === 1);
 output('Reason');
