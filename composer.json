@@ -1,0 +1,23 @@
+{
+    "name": "mglaman/drupal-typed-data-by-example",
+    "description": "Examples using the Typed Data API in Drupal",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Matt Glaman",
+            "email": "nmd.matt@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "drupal/core": "^9.3"
+    },
+    "autoload": {
+        "files": [
+            "bootstrap.php",
+            "helpers.php"
+        ]
+    },
+    "minimum-stability": "stable"
+}
