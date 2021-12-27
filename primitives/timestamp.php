@@ -10,7 +10,6 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Drupal\Core\TypedData\DataDefinition;
-use Drupal\Core\TypedData\Plugin\DataType\IntegerData;
 use Drupal\Core\TypedData\Plugin\DataType\Timestamp;
 
 $typed_data_manager = \Drupal::typedDataManager();
