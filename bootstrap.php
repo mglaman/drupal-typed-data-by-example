@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /**
  * @file
@@ -9,6 +8,7 @@ declare(strict_types=1);
  * aspects of Drupal for our stateless examples.
  */
 
+use Drupal\Core\Config\MemoryStorage;
 use Drupal\Core\Database\Database;
 use Drupal\Core\DrupalKernel;
 use Drupal\Core\Site\Settings;
@@ -26,11 +26,22 @@ Database::addConnectionInfo('default', 'default', [
 
 chdir($drupalRoot);
 
-// Initialize empty settings.
-Settings::initialize($drupalRoot, __DIR__, $autoloader);
-
+// Initialize settings.
+new Settings([
+  'bootstrap_config_storage' => static function () {
+    $memoryStorage = new MemoryStorage();
+    $memoryStorage->write('core.extension', [
+      'module' => [
+        'system' => 0,
+        'serialization' => 0,
+      ],
+      'profile' => 'minimal',
+    ]);
+    return $memoryStorage;
+  },
+]);
 // Cause the static \Drupal class to become populated with a container.
 DrupalKernel::bootEnvironment($drupalRoot);
-$kernel = new DrupalKernel('prod', $autoloader, TRUE, $drupalRoot);
+$kernel = new DrupalKernel('prod', $autoloader, FALSE, $drupalRoot);
 $kernel->setSitePath(__DIR__);
 $kernel->boot();
