@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /**
  * @file
@@ -28,4 +27,3 @@ assert($timestamp instanceof Timestamp);
 assert($timestamp->getCastedValue() === 1640639271);
 
 output($timestamp->getDateTime()->format(\DateTimeInterface::ATOM));
-
