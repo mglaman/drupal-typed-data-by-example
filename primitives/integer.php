@@ -3,19 +3,18 @@ declare(strict_types=1);
 
 /**
  * @file
- *
- * An example of using the Typed Data API for integers
+ * An example of using the Typed Data API for integers.
  *
  * @todo Drupal does not expose `\Symfony\Component\Validator\Constraints\Positive` for unsigned integers.
  */
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\TypedData\Plugin\DataType\IntegerData;
 
 $typed_data_manager = \Drupal::typedDataManager();
 
-// An integer
+// An integer.
 $definition = DataDefinition::create('integer');
 
 $integer = $typed_data_manager->create($definition, 10);

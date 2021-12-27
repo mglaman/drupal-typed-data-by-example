@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 /**
  * @file
- *
- * An example of using the Typed Data API for a string that is intended to
- * be used as an email.
+ * An example of using the Typed Data API for an email string.
  */
-require __DIR__.'/../vendor/autoload.php';
+
+require __DIR__ . '/../vendor/autoload.php';
 
 use Drupal\Core\Render\Element\Email as EmailElement;
 use Drupal\Core\TypedData\DataDefinition;
+use Drupal\Core\TypedData\Plugin\DataType\Email;
 
 $typed_data_manager = \Drupal::typedDataManager();
 
@@ -29,14 +29,13 @@ $definition = DataDefinition::create('email')
 
 
 $valid = $typed_data_manager->create($definition, 'foo@example.com');
-assert($valid instanceof \Drupal\Core\TypedData\Plugin\DataType\Email);
+assert($valid instanceof Email);
 $violations = $valid->validate();
 assert(count($violations) === 0);
 
 $invalid = $typed_data_manager->create($definition, 'foo@localhost');
-assert($valid instanceof \Drupal\Core\TypedData\Plugin\DataType\Email);
+assert($valid instanceof Email);
 $violations = $invalid->validate();
 assert(count($violations) === 1);
 output('Reason');
 output((string) $violations->get(0));
-

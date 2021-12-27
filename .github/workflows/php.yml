@@ -27,5 +27,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
       - name: lint
         run: find . -name '*.php' ! -path './vendor/*' -exec php -l -n {} \; | (! grep -v "No syntax errors detected")
+      - name: phpcs
+        run: php vendor/bin/phpcs
       - name: run examples
         run: find . -name '*.php' ! -path './vendor/*' -exec php -n {} \;

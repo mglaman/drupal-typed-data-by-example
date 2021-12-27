@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="drupal-typed-data-by-example">
+    <arg name="extensions" value="php"/>
+    <config name="drupal_core_version" value="8"/>
+    <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal">
+        <exclude name="Drupal.WhiteSpace.OpenTagNewline.BlankLine" />
+        <exclude name="Drupal.Commenting.FileComment.Missing" />
+    </rule>
+    <file>lists</file>
+    <file>maps</file>
+    <file>primitives</file>
+    <file>serialization</file>
+    <file>./bootstrap.php</file>
+    <file>./helpers.php</file>
+</ruleset>

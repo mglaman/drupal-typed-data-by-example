@@ -1,7 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 /**
  * @file
+ * Allows us to boostrap the Drupal kernel.
  *
  * This is used to run parts of the Typed Data API which require stateful
  * aspects of Drupal for our stateless examples.
@@ -12,7 +14,7 @@ use Drupal\Core\DrupalKernel;
 use Drupal\Core\Site\Settings;
 
 if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
-    return;
+  return;
 }
 $autoloader = require __DIR__ . '/vendor/autoload.php';
 
