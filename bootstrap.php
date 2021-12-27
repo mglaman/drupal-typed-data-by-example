@@ -39,9 +39,27 @@ new Settings([
     ]);
     return $memoryStorage;
   },
+  'cache' => [
+    'default' => 'cache.backend.memory',
+  ],
 ]);
+
+$kernel = new class('prod', $autoloader, FALSE, $drupalRoot) extends DrupalKernel {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected $sitePath = __DIR__;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCachedContainerDefinition(): array | NULL {
+    return NULL;
+  }
+
+};
+
 // Cause the static \Drupal class to become populated with a container.
-DrupalKernel::bootEnvironment($drupalRoot);
-$kernel = new DrupalKernel('prod', $autoloader, FALSE, $drupalRoot);
-$kernel->setSitePath(__DIR__);
+$kernel::bootEnvironment($drupalRoot);
 $kernel->boot();
