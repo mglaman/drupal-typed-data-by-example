@@ -26,5 +26,5 @@ All of the examples can be run to see sample outputs.
 For example, the following will run the `emails` example in `strings` and print any of the additional output provided for context.
 
 ```bash
-php strings/email.php
+php primitives/email.php
 ```
