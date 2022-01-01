@@ -36,4 +36,5 @@ assert($invalid_value instanceof StringData);
 $violations = $invalid_value->validate();
 assert(count($violations) === 1);
 
+output('Reason');
 output((string) $violations->get(0));
