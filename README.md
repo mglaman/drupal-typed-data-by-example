@@ -23,7 +23,13 @@ The examples are broken into different groups, each with their own directory:
 
 All of the examples can be run to see sample outputs.
 
-For example, the following will run the `emails` example in `strings` and print any of the additional output provided for context.
+First, install the dependencies and generate the autoloader (requires PHP `^8.0`):
+
+```bash
+composer install
+```
+
+For example, the following will run the `emails` example in `primitives/` and print any of the additional output provided for context.
 
 ```bash
 php primitives/email.php
