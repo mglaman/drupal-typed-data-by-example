@@ -15,7 +15,7 @@ $typed_data_manager = \Drupal::typedDataManager();
 // By using a data definition, we can apply metadata that describes our string
 // to describe its schema and validation requirements.
 $string_definition = DataDefinition::create('string')
-  // The string has a maximum length of 25.
+  // The string has a maximum length of 10.
   ->addConstraint('Length', [
     'max' => 10,
     'maxMessage' => 'Cannot be longer than 10',
@@ -36,4 +36,5 @@ assert($invalid_value instanceof StringData);
 $violations = $invalid_value->validate();
 assert(count($violations) === 1);
 
+output('Reason');
 output((string) $violations->get(0));

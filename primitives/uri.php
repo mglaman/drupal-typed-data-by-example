@@ -35,6 +35,7 @@ assert(count($violations) === 1);
 // us _why_ the URI is invalid. This is handled by PrimitiveTypeConstraint.
 // @see \Drupal\Core\Validation\Plugin\Validation\Constraint\PrimitiveTypeConstraintValidator::validate:56
 assert((string) $violations->get(0)->getMessage() === 'This value should be of the correct primitive type.');
+output('Reason');
 output((string) $violations->get(0));
 
 $uri = $typed_data_manager->create($definition, 'public://foo/bar/baz');
