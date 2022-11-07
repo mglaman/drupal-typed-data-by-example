@@ -57,5 +57,5 @@ $invalid_currency = $typed_data_manager->create($price_definition, [
 ]);
 $violations = $invalid_currency->validate();
 assert(count($violations) === 1);
-assert($violations->get(0)->getMessage() === 'The value you selected is not a valid choice.');
+assert((string) $violations->get(0)->getMessage() === 'The value you selected is not a valid choice.');
 output((string) $violations->get(0));

@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "drupal/core": "^9.3"
+        "drupal/core": "^9.4",
+        "mglaman/drupal-memory-kernel": "^1.0"
     },
     "autoload": {
         "files": [
