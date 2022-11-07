@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "drupal/core": "^9.4",
         "mglaman/drupal-memory-kernel": "^1.0"
     },
