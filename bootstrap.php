@@ -14,7 +14,7 @@ $kernel = MemoryKernelFactory::get(
   environment: 'testing',
   autoloader: require __DIR__ . '/vendor/autoload.php',
   modules: [
-    'system',
-    'serialization',
+    'system' => 0,
+    'serialization' => 0,
   ],
 );

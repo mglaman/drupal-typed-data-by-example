@@ -51,3 +51,4 @@ $user_data = $typed_data_manager->create($definition, Json::decode($serialized))
 assert($user_data instanceof Map);
 assert($user_data->get('name')->getValue() === 'foobar');
 assert(count($user_data->validate()) === 0);
+var_export($serialized);
