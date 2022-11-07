@@ -8,58 +8,13 @@
  * aspects of Drupal for our stateless examples.
  */
 
-use Drupal\Core\Config\MemoryStorage;
-use Drupal\Core\Database\Database;
-use Drupal\Core\DrupalKernel;
-use Drupal\Core\Site\Settings;
+use mglaman\DrupalMemoryKernel\MemoryKernelFactory;
 
-if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
-  return;
-}
-$autoloader = require __DIR__ . '/vendor/autoload.php';
-
-$drupalRoot = __DIR__ . '/vendor/drupal';
-Database::addConnectionInfo('default', 'default', [
-  'driver' => 'sqlite',
-  'database' => ':memory:',
-]);
-
-chdir($drupalRoot);
-
-// Initialize settings.
-new Settings([
-  'bootstrap_config_storage' => static function () {
-    $memoryStorage = new MemoryStorage();
-    $memoryStorage->write('core.extension', [
-      'module' => [
-        'system' => 0,
-        'serialization' => 0,
-      ],
-      'profile' => 'minimal',
-    ]);
-    return $memoryStorage;
-  },
-  'cache' => [
-    'default' => 'cache.backend.memory',
+$kernel = MemoryKernelFactory::get(
+  environment: 'testing',
+  autoloader: require __DIR__ . '/vendor/autoload.php',
+  modules: [
+    'system',
+    'serialization',
   ],
-]);
-
-$kernel = new class('prod', $autoloader, FALSE, $drupalRoot) extends DrupalKernel {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected $sitePath = __DIR__;
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCachedContainerDefinition(): array | NULL {
-    return NULL;
-  }
-
-};
-
-// Cause the static \Drupal class to become populated with a container.
-$kernel::bootEnvironment($drupalRoot);
-$kernel->boot();
+);
