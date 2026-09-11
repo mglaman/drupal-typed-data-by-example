@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * @file
@@ -7,7 +9,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Drupal\Core\TypedData\DataDefinition;
-use \Drupal\Core\TypedData\Plugin\DataType\DateTimeIso8601;
+use Drupal\Core\TypedData\Plugin\DataType\DateTimeIso8601;
 
 $typed_data_manager = \Drupal::typedDataManager();
 

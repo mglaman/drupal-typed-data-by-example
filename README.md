@@ -23,7 +23,7 @@ The examples are broken into different groups, each with their own directory:
 
 All of the examples can be run to see sample outputs.
 
-First, install the dependencies and generate the autoloader (requires PHP `^8.0`):
+First, install the dependencies and generate the autoloader (requires PHP `^8.3` and installs Drupal 11):
 
 ```bash
 composer install

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * @file
@@ -8,11 +10,13 @@
  * aspects of Drupal for our stateless examples.
  */
 
-use mglaman\DrupalMemoryKernel\MemoryKernelFactory;
+use TypedDataByExample\MemoryKernel;
 
-$kernel = MemoryKernelFactory::get(
+$autoloader = require __DIR__ . '/vendor/autoload.php';
+
+$kernel = MemoryKernel::create(
   environment: 'testing',
-  autoloader: require __DIR__ . '/vendor/autoload.php',
+  autoloader: $autoloader,
   modules: [
     'system' => 0,
     'serialization' => 0,

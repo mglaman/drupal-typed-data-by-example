@@ -10,6 +10,7 @@
     <file>maps</file>
     <file>primitives</file>
     <file>serialization</file>
+    <file>src</file>
     <file>./bootstrap.php</file>
     <file>./helpers.php</file>
 </ruleset>
