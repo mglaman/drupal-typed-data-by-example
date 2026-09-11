@@ -13,7 +13,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: dom, curl, libxml, mbstring, zip, pdo, gd
+          extensions: dom, curl, libxml, mbstring, zip, pdo, pdo_sqlite, sqlite3, tokenizer, gd
       - name: validate composer.json and composer.lock
         run: composer validate --strict
       - name: cache
@@ -34,6 +34,6 @@ jobs:
         run: |
           for example in $(find primitives lists maps serialization -name '*.php' | sort); do
             echo "::group::$example"
-            php -n "$example" || exit 1
+            php "$example" || exit 1
             echo "::endgroup::"
           done
